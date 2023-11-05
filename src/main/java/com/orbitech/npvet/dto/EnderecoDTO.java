@@ -16,6 +16,8 @@ import java.util.List;
 public class EnderecoDTO extends AbstractEntityDTO{
     @NotNull(message = "O logradouro deve ser informado!")
     private String logradouro;
+    @NotNull(message = "O bairro deve ser informado!")
+    private String bairro;
     @NotNull(message = "A cidade deve ser informado!")
     private String cidade;
     @NotNull(message = "O estado deve ser informado!")

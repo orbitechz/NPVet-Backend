@@ -16,25 +16,25 @@ public interface TutorRepository extends JpaRepository<Tutor, Long> {
     /**
      * Retorna Lista de Tutores com o nome exato ao informado
      * */
-    @Query("from Tutor where nome = nome")
+    @Query("from Tutor where nome = :nome")
     public List<Tutor> findAllByNome(@Param("nome") String nome);
 
     /**
     * Retorna Tutor com o CPF informado
     * */
-    @Query("from Tutor where cpf = cpf")
+    @Query("from Tutor where cpf = :cpf")
     public Tutor findByCpf(@Param("cpf") String cpf);
 
     /**
     * Retorna Tutor com o RG informado
     * */
-    @Query("from Tutor where rg = rg")
+    @Query("from Tutor where rg = :rg")
     public Tutor findByRg(@Param("rg") String rg);
 
     /**
      * Retorna Lista de Tutor com que têm e-mail informado
      * */
-    @Query("from Tutor where email = email")
+    @Query("from Tutor where email = :email")
     public List<Tutor> findAllByEmailLike(@Param("email") String email);
 
     /**
