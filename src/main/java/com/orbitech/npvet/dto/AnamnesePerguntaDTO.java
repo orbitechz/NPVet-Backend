@@ -9,7 +9,7 @@ import lombok.Setter;
 public class AnamnesePerguntaDTO extends AbstractEntityDTO{
 
     @NotNull(message = "A pergunta deve ser informada!")
-    private String perguntaDTO;
+    private String pergunta;
 
     @NotNull(message = "A resposta deve ser informada!")
     private String resposta;
