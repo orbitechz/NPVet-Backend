@@ -3,7 +3,6 @@ package com.orbitech.npvet.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.orbitech.npvet.entity.Status;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

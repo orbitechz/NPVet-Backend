@@ -172,12 +172,12 @@ class AnamneseControllerTest {
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 
-    @Test
-    @DisplayName("Teste de adição de Perguntas e Respostas à Anamnese")
-    void addQuestionAnswerToAnamneseTest(){
+//    @Test
+//    @DisplayName("Teste de adição de Perguntas e Respostas à Anamnese")
+//    void addQuestionAnswerToAnamneseTest(){
 //        anamnesePerguntaDTO.setAnamneseDTO(anamneseDTO);
 //        anamnesePerguntaDTO.setPerguntaDTO(new PerguntaDTO());
-        anamnesePerguntaDTO.setResposta("resposta sample");
+//        anamnesePerguntaDTO.setResposta("resposta sample");
 
 ////        ResponseEntity<AnamnesePerguntaDTO> response =
 //////                anamneseController.addQuestionAnswerToAnamnese(1L,anamnesePerguntaDTO);
@@ -185,7 +185,7 @@ class AnamneseControllerTest {
 ////        assertNotNull(response);
 //        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 
-    }
+//    }
 
 //    @Test
 //    @DisplayName("Teste de adição de Progresso Médico")

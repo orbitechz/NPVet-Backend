@@ -1,6 +1,5 @@
 package com.orbitech.npvet.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
