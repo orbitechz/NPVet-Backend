@@ -1,7 +1,5 @@
 package com.orbitech.npvet.dto;
 
-import com.orbitech.npvet.entity.AbstractEntity;
-import com.orbitech.npvet.entity.Consulta;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

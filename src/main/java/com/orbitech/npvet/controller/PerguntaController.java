@@ -1,6 +1,5 @@
 package com.orbitech.npvet.controller;
 
-import com.orbitech.npvet.dto.AnamneseDTO;
 import com.orbitech.npvet.dto.PerguntaDTO;
 import com.orbitech.npvet.service.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;

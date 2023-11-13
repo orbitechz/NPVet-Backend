@@ -1,8 +1,6 @@
 package com.orbitech.npvet.controller;
 
 import com.orbitech.npvet.dto.AnimalDTO;
-import com.orbitech.npvet.dto.TutorDTO;
-import com.orbitech.npvet.entity.Animal;
 import com.orbitech.npvet.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

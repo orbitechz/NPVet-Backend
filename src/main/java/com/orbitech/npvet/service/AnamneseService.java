@@ -32,15 +32,15 @@ public class AnamneseService {
 
     public static final String NOT_FOUND_MESSAGE = "O ID = %s solicitado não foi encontrado no banco de dados.";
 
-    private AnamneseHistorico toAnamneseHistorico(AnamneseHistoricoDTO progressoMedico) {
+    public AnamneseHistorico toAnamneseHistorico(AnamneseHistoricoDTO progressoMedico) {
         return modelMapper.map(progressoMedico, AnamneseHistorico.class);
     }
 
-    private AnamneseHistoricoDTO toAnamneseHistoricoDto(AnamneseHistorico progressoMedico) {
+    public AnamneseHistoricoDTO toAnamneseHistoricoDto(AnamneseHistorico progressoMedico) {
         return modelMapper.map(progressoMedico, AnamneseHistoricoDTO.class);
     }
 
-    private AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
+    public AnamnesePergunta toAnamnesePergunta(AnamnesePerguntaDTO request) {
         return modelMapper.map(request, AnamnesePergunta.class);
     }
 
