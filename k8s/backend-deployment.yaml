@@ -17,3 +17,18 @@ spec:
         image: 646838487189.dkr.ecr.us-east-1.amazonaws.com/npvet-backend
         ports:
         - containerPort: 8080
+        env:
+        - name: API_PORTA
+          value: "8080"
+        - name: DB_HOST
+          value: "npvet.ch3sxjfqqiwc.us-east-1.rds.amazonaws.com"
+        - name: DB_PORTA
+          value: "5432"
+        - name: DB_NOME
+          value: "npvet"
+        - name: DB_USER
+          value: "postgres"
+        - name: DB_PWD
+          value: "postgres"
+        - name: DDL
+          value: "validate"
