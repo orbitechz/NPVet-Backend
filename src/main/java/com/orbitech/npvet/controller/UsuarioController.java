@@ -1,5 +1,6 @@
 package com.orbitech.npvet.controller;
 
+import com.orbitech.npvet.dto.UsuarioCadastrarDTO;
 import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.service.UsuarioService;
@@ -30,7 +31,7 @@ public class UsuarioController {
     }
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<UsuarioDTO>create(@Validated @RequestBody UsuarioDTO usuarioDTO, @AuthenticationPrincipal Usuario usuarioAutenticado){
+    public ResponseEntity<UsuarioDTO>create(@Validated @RequestBody UsuarioCadastrarDTO usuarioDTO, @AuthenticationPrincipal Usuario usuarioAutenticado){
         return ResponseEntity.ok(service.create(usuarioDTO, usuarioAutenticado));
     }
     @PutMapping("/update/{id}")
