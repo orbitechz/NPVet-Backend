@@ -1,13 +1,16 @@
 package com.orbitech.npvet.service;
 
+import com.orbitech.npvet.dto.UsuarioCadastrarDTO;
 import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Role;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.repository.UsuarioRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -16,9 +19,12 @@ import java.util.List;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class UsuarioService {
     @Autowired
     private UsuarioRepository repository;
+
+    private PasswordEncoder passwordEncoder;
 
     private final ModelMapper mapper = new ModelMapper();
 
@@ -26,7 +32,19 @@ public class UsuarioService {
         return mapper.map(usuarioEntidade, UsuarioDTO.class);
     }
 
+    public UsuarioCadastrarDTO toUsuarioCadastrarDTO(Usuario usuarioEntidade){
+        return mapper.map(usuarioEntidade, UsuarioCadastrarDTO.class);
+    }
+
     public Usuario toUsuarioEntidade(UsuarioDTO usuarioDTO){
+        return mapper.map(usuarioDTO, Usuario.class);
+    }
+
+    public Usuario toUsuarioEntidade(UsuarioCadastrarDTO usuarioDTO){
+        return mapper.map(usuarioDTO, Usuario.class);
+    }
+
+    public Usuario toUsuarioCadastrarEntidade(UsuarioCadastrarDTO usuarioDTO){
         return mapper.map(usuarioDTO, Usuario.class);
     }
 
@@ -34,15 +52,22 @@ public class UsuarioService {
         return toUsuarioDTO(repository.findById(id).orElse(null));
    }
 
+    public UsuarioCadastrarDTO getByIdForDelete(String id){
+        return toUsuarioCadastrarDTO(repository.findById(id).orElse(null));
+    }
+
     public List<UsuarioDTO> getAll() {
         return repository.findAll().stream().map(this::toUsuarioDTO).toList();
     }
     @Transactional
-    public UsuarioDTO create(UsuarioDTO usuarioDTO, Usuario usuarioAutenticado) {
+    public UsuarioDTO create(UsuarioCadastrarDTO usuarioDTO, Usuario usuarioAutenticado) {
         Usuario usuarioByCpf = repository.findUsuarioByCpf(usuarioDTO.getCpf());
 
+        String encodedPassword = passwordEncoder.encode(usuarioDTO.getPassword());
+        usuarioDTO.setPassword(encodedPassword);
+
         Assert.isTrue(usuarioByCpf == null, String.format("Usuário com o CPF: {%s} já existe!",usuarioDTO.getCpf()));
-        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(usuarioDTO)));
+        UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioCadastrarEntidade(usuarioDTO)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Criado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
        return usuarioDT;
     }
@@ -106,7 +131,7 @@ public class UsuarioService {
 
     @Transactional
     public UsuarioDTO delete(String id, Usuario usuarioAutenticado){
-        UsuarioDTO userById = getById(id);
+        UsuarioCadastrarDTO userById = getByIdForDelete(id);
         userById.delete();
         UsuarioDTO usuarioDT = toUsuarioDTO(repository.save(toUsuarioEntidade(userById)));
         log.info("USUÁRIO:" + usuarioDT.getNome() + "NOME:" +usuarioDT.getNome()+ "USERNAME:" + usuarioDT.getUsername() + "CPF:" + usuarioDT.getCpf() + "| Deletado por:" + usuarioAutenticado.getNome() + " "+ usuarioAutenticado.getId());
