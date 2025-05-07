@@ -1,5 +1,6 @@
 package com.orbitech.npvet.controller;
 
+import com.orbitech.npvet.dto.UsuarioCadastrarDTO;
 import com.orbitech.npvet.dto.UsuarioDTO;
 import com.orbitech.npvet.entity.Usuario;
 import com.orbitech.npvet.service.UsuarioService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/npvet-api/usuario")
 public class UsuarioController {
     @Autowired
     private UsuarioService service;
@@ -30,13 +31,13 @@ public class UsuarioController {
     }
     @PostMapping("/post")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<UsuarioDTO>create(@Validated @RequestBody UsuarioDTO usuarioDTO, @AuthenticationPrincipal Usuario usuarioAutenticado){
+    public ResponseEntity<UsuarioDTO>create(@Validated @RequestBody UsuarioCadastrarDTO usuarioDTO, @AuthenticationPrincipal Usuario usuarioAutenticado){
         return ResponseEntity.ok(service.create(usuarioDTO, usuarioAutenticado));
     }
     @PutMapping("/update/{id}")
     @PreAuthorize("hasAnyAuthority('ADMINISTRADOR')")
-    public ResponseEntity<UsuarioDTO>update(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") final long id, @RequestBody @Validated UsuarioDTO usuarioDTO){
-        return ResponseEntity.ok(service.update(id,usuarioDTO, usuarioAutenticado));
+    public ResponseEntity<UsuarioDTO>update(@AuthenticationPrincipal Usuario usuarioAutenticado, @PathVariable("id") final long id, @RequestBody @Validated UsuarioCadastrarDTO UsuarioCadastrarDTO){
+        return ResponseEntity.ok(service.update(id,UsuarioCadastrarDTO, usuarioAutenticado));
     }
 
     @GetMapping("/nome/{nome}")

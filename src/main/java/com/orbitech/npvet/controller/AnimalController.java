@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/animal")
+@RequestMapping("/npvet-api/animal")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 @Slf4j
 public class AnimalController {

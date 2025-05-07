@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/npvet-api/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
 

@@ -34,3 +34,6 @@ build/
 
 ## Ambiente local ##
 .env
+
+*.gz
+logs.log

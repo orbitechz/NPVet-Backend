@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/vacina")
+@RequestMapping("/npvet-api/vacina")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 
 public class VacinaController {

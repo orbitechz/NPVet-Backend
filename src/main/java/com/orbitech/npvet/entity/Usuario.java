@@ -25,7 +25,7 @@ public class Usuario extends AbstractEntity implements UserDetails {
     @Column(length = 100, name = "nome")
     private String nome;
 
-    @Column(unique = true, length = 11, name = "cpf")
+    @Column(unique = true, length = 14, name = "cpf")
     private String cpf;
 
     @Enumerated(EnumType.STRING)

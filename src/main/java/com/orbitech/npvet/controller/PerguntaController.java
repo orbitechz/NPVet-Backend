@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pergunta")
+@RequestMapping("/npvet-api/pergunta")
 public class PerguntaController {
     @Autowired
     public PerguntaService perguntaService;

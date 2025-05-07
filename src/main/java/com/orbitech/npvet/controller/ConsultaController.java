@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/consulta")
+@RequestMapping("/npvet-api/consulta")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class ConsultaController {
     @Autowired

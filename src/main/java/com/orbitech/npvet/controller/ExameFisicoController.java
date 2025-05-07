@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/examefisico")
+@RequestMapping("/npvet-api/examefisico")
 @PreAuthorize("hasAuthority('ADMINISTRADOR')")
 public class ExameFisicoController {
 
